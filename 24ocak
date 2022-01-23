@@ -1,0 +1,1547 @@
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#NoEnv
+SendMode Input
+DetectHiddenWindows, On
+DetectHiddenText,On
+SetTitleMatchMode,2
+IfWinExist,HTTP Debugger
+	ExitApp
+IfWinExist,,Debugger
+	ExitApp
+IfWinExist,,DEBUGGER
+	ExitApp
+IfWinExist,,Encrpyt
+	ExitApp
+IfWinExist,,Dissambler
+	ExitApp
+IfWinExist,,IDA
+	ExitApp
+IfWinExist,,Debug
+	ExitApp
+IfWinExist,,Dissamble
+	ExitApp
+IfWinExist,,Cheat
+	ExitApp
+if WinExist("Debugger")
+	ExitApp
+
+full_command_line := DllCall("GetCommandLine", "str")
+
+if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+{
+    try
+    {
+        if A_IsCompiled
+            Run *RunAs "%A_ScriptFullPath%" /restart
+        else
+            Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
+    }
+    ExitApp
+}
+
+;Balıkçı oto seçiyo solucan alıyor pm koruma chat koruma var ilkel
+Menu, Tray, Tip, Tospik Fishing Macro by Chrys
+Menu, Tray,Icon, %A_WorkingDir%\Necessary\Tospik.ico,,1
+;Menu,Tray,Add,Discord,myLabel
+MsgBox     	Tospik Fishing Macro `n Yukarı Ok tuşuyla başlatın `n 'Ç' harfi ile ekranı düzenleyin`n Youtube: `n Discord: Chrys#9247 
+;myLabel:
+;Run https://discord.gg/CftWFxUA3A
+
+try{
+URLDownloadToFile, http://worldtimeapi.org/api/timezone/Etc/GMT-3, %A_WorkingDir%\Necessary\t.txt
+}catch e{
+	MsgBox Giriş başarısız!Lütfen tekrar deneyiniz.
+	ExitApp
+}
+
+FileReadLine, dayOfYear,%A_WorkingDir%\Necessary\t.txt,1
+daytext :=InStr(dayOfYear,"day_of_year") 
+daytext :=daytext+13
+gun :=SubStr(dayOfYear,daytext,2)
+
+isdigit :=0
+if gun is digit
+	isdigit :=1
+
+if(%isdigit%==0){
+	gun :=SubStr(dayOfYear,daytext,1)
+}
+
+toBin(i, s = 0, c = 0) {
+	l := StrLen(i := Abs(i + u := i < 0))
+	Loop, % Abs(s) + !s * l << 2
+		b := u ^ 1 & i // (1 << c++) . b
+	Return, b
+}
+k :=toBin(gun)
+Sleep,2000
+
+
+if(!(k>0)){
+MsgBox, ,Kullanım Süresi,Süreniz bitti!,15
+ExitApp
+}
+r :=toBin(25)     ;key end time
+if(k>r){
+	MsgBox, ,Kullanım Süresi,Süreniz bitti!,15
+	ExitApp
+}
+MsgBox Giriş Başarılı
+MGT(x,y,t := 0){
+DllCall("SetCursorPos", int, x, int, y)
+sleep 150
+send {RButton}
+sleep t
+return 0
+FormatTime, Time
+;FileAppend,`nSağ tıklandı %x% %y% %Time%,Debug.txt
+}
+hiz := 4
+altinton := 0
+yabbiect := 0
+altintoncount :=0
+altinsudak :=0
+fishingcount :=0
+palamutcount :=0
+kurbagacount :=0
+kadifecount :=0
+ucteuccount :=0
+zargana :=0
+kral :=0
+yilanbasi :=0
+anahtar :=0
+hamsicount :=0
+
+
+FormatTime,baslangicM,,m
+FormatTime,baslangicH,,H
+changech(){
+	MouseMove,785,608,100
+	Sleep,1000
+	MouseClick,L,785,608,1,100
+	Sleep,1000
+	MouseMove,396,379,100
+	Sleep,1000
+	MouseClick,L,396,379,1,100
+	Sleep,10000
+	
+	Array := []
+	ArrayCount :=0
+	Loop,Read,%A_WorkingDir%\Necessary\Settings\Channels.txt
+	{
+		ArrayCount +=1
+		Array%ArrayCount% :=A_LoopReadLine
+		
+	}
+	
+	Random,randNum,1,%ArrayCount%
+	
+	randCh := Array[randNum]
+	
+	Sleep,5000
+	
+	
+	ImageSearch,channelX,channelY,200,100,400,200,%A_WorkingDir%\Necessary\Operators\serversec.png
+	if(!ErrorLevel){
+		
+		if(randCh==1){
+			MouseMove,490,202,100
+			Sleep,1000
+			MouseClick,L,490,202,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==2){
+				MouseMove,490,220,100
+			Sleep,1000
+			MouseClick,L,490,220,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==3){
+				MouseMove,490,238,100
+			Sleep,1000
+			MouseClick,L,490,238,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==4){
+				MouseMove,490,257,100
+			Sleep,1000
+			MouseClick,L,490,257,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==5){
+				MouseMove,490,275,100
+			Sleep,1000
+			MouseClick,L,490,275,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==6){
+				MouseMove,490,289,100
+			Sleep,1000
+			MouseClick,L,490,289,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==7){
+				MouseMove,490,305,100
+			Sleep,1000
+			MouseClick,L,490,305,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==8){
+				MouseMove,490,323,100
+			Sleep,1000
+			MouseClick,L,490,323,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+		
+		if(randCh==9){
+				MouseMove,490,331,100
+			Sleep,1000
+			MouseClick,L,490,331,1,100
+			Sleep,100
+			MouseMove,517,517,100
+			Sleep,1000
+			MouseClick,L,517,517,1,100
+			Sleep,10000
+			ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,5000
+			break
+		}
+	}
+}
+		}
+		
+	}
+	
+}
+
+setscreen(isMapOpen){
+	Sleep,2000
+Send {L down}
+Sleep,100
+Send {L up}
+Sleep,1000
+FormatTime, Time
+;FileAppend, `nSohbet penceresi açıldı %Time%,Debug.txt
+ImageSearch, bagx,bagy,0,0,797,597,%A_WorkingDir%\Necessary\Operators\bagirmak.png
+if(!ErrorLevel){
+;~ MsgBox %bagx%,%bagy%
+Sleep,200
+
+Sleep,100
+
+Sleep,100
+		Sleep,100
+		MouseMove, %bagx%,%bagy%,100
+		Sleep,100
+		Send {Click down}
+		Sleep,100
+		MouseMove,454,453,100
+		Sleep,500
+		Send {Click up}
+		Sleep,500
+		MouseMove,524,472,100
+		Sleep,300
+		MouseClick,L,526,474,1,100
+		Sleep,300
+		MouseMove,334,477,100
+		Sleep,300
+		MouseClick,L,334,477,1,100
+		Sleep,300
+		;FileAppend, `nSohbet penceresi yerleştirildi %Time%,Debug.txt
+		Sleep,300
+}
+
+if(isMapOpen==0){
+Sleep,2000
+Send {M down}
+Sleep,100
+Send {M up}
+Sleep,1000
+;FileAppend,`nMap açıldı %Time%,Debug.txt
+}
+ImageSearch, mapx,mapy,214,86,471,415,%A_WorkingDir%\Necessary\Operators\map.png
+if(!ErrorLevel){
+		Sleep,1000
+		MouseMove, %mapx%,%mapy%,100
+		Sleep,100
+		Send {Click down}
+		Sleep,100
+		MouseMove,173,217,100
+		Sleep,100
+		Send {Click up}
+		Sleep,100
+		;FileAppend,`nMap yerleştirildi,Debug.txt
+	}
+	Sleep,100
+	MouseMove,710,600,100
+	Sleep,300
+MouseClick,L,710,600,1,100
+;FileAppend,`nEnvanter açıldı %Time%,Debug.txt
+}
+
+
+MGTL(x,y,t := 0){
+	DllCall("SetCursorPos", int, x, int, y)
+	sleep 50
+	send {LButton}
+	sleep t
+	FormatTime,Time
+	;FileAppend,`nSol tıkladı %x% %y% %Time%,Debug.txt
+}
+
+
+FileRead, isMapOpen,%A_WorkingDir%\Settings\MapOnOff.txt
+FileRead, pmKontrol,%A_WorkingDir%\Settings\PmOnOff.txt
+FileRead, chatKontrol,%A_WorkingDir%\Settings\ChatOnOff.txt
+FileRead, saldiriKontrol,%A_WorkingDir%\Settings\SaldırıOnOff.txt
+FileRead, pmv,%A_WorkingDir%\Settings\PmTime.txt
+FileRead, chatv,%A_WorkingDir%\Settings\ChatTime.txt
+FileRead, saldiriv,%A_WorkingDir%\Settings\SaldırıTime.txt
+FileRead, circleCount,%A_WorkingDir%\Settings\Grill.txt
+FileRead, starthere,%A_WorkingDir%\Settings\Olunce.txt
+FileRead, grill,%A_WorkingDir%\Settings\KızartOnOff.txt
+FileRead, buyWorm,%A_WorkingDir%\Settings\SolucanOnOff.txt
+FileRead, takebreaktime,%A_WorkingDir%\Settings\MolaTime1.txt	;ekle
+FileRead, breaktime,%A_WorkingDir%\Settings\MolaTime2.txt	;ekle
+FileRead, relogtime,%A_WorkingDir%\Settings\RelogTime.txt		;ekle
+FileRead, relog,%A_WorkingDir%\Settings\RelogOnOff.txt
+FileRead, breyk,%A_WorkingDir%\Settings\MolaOnOff.txt
+FileRead, solucancount,%A_WorkingDir%\Settings\SolucanAdet.txt
+FileRead, answerPM,%A_WorkingDir%\Settings\AnswerPmOnOff.txt
+FileRead, answerTextPm,%A_WorkingDir%\Settings\AnswerTextPm.txt
+FileRead, whendead,%A_WorkingDir%Settings\Olunce.txt
+
+
+FileRead,yabbietut,%A_WorkingDir%\Settings\YabbieOnOff.txt
+FileRead,sudaktut,%A_WorkingDir%\Settings\SudakOnOff.txt
+FileRead,kadifetut,%A_WorkingDir%\Settings\KadifeOnOff.txt
+FileRead,kurbagatut,%A_WorkingDir%\Settings\KurbağaOnOff.txt
+FileRead,palamuttut,%A_WorkingDir%\Settings\PalamutOnOff.txt
+FileRead,zarganatut,%A_WorkingDir%\Settings\ZarganaOnOff.txt
+FileRead,kraltut,%A_WorkingDir%\Settings\KralOnOff.txt
+FileRead,yilanbasitut,%A_WorkingDir%\Settings\YılanbaşıOnOff.txt
+FileRead,anahtartut,%A_WorkingDir%\Settings\DenizKızıOnOff.txt
+FileRead,hamsitut,%A_WorkingDir%\Settings\HamsiOnOff.txt
+
+;~ ShowMsgBox(){
+	;~ MsgBox, Yakında birisi var ve chate yazdı
+	;~ MsgBox, Yakında birisi var ve chate yazdı, 10
+	;~ Sleep,100
+	;~ ImageSearch, Kx3, Ky3, 626, 230, 794, 558, *64 %A_WorkingDir%\Necessary\Fishes\solucan.bmp
+	;~ MouseMove, %Kx3%,%Ky3%,100
+	;~ MouseClick,R,%Kx3%,%Ky3%,3,100
+	
+;~ }
+active_pid := DllCall("GetCurrentProcessId")
+Process, Priority, %active_pid%, R
+
+ç::
+setscreen(isMapOpen)
+
+
+Pause
+Up::
+Pause
+
+basla1:
+Loop{
+
+basla:
+altinton := 0
+fishingcount :=fishingcount  +1
+pmx :=0
+pmy :=0
+cx :=0
+cy :=0
+
+FormatTime,workingM,,m
+FormatTime,workingH,,H
+
+BottingTime :=((workingH*60+workingM+1)-(baslangicH*60+baslangicM))
+FormatTime, Time
+if(breyk==1){
+if(Mod(((workingH*60+workingM+1)-(baslangicH*60+baslangicM)),takebreaktime)==0){
+	FileAppend,`nMola veriliyor. Time:%Time% ,BotLogs.txt
+	myVar := breaktime*60000
+	MsgBox,,Mola,Mola başlıyor. ,5
+	Sleep,myVar
+	FileAppend,`nMola bitti Time:%Time%, BotLogs.txt
+	MsgBox,,Mola,Mola bitti. ,5
+	IfWinExist,METIN2
+		WinActivate
+	;süre geçtiyse napcak
+	Sleep,300
+	IfWinExist,METIN2
+		WinActivate
+	sleep,6000
+	goto, basla1
+}
+}
+if(relog==1){
+if(Mod(((workingH*60+workingM+1)-(baslangicH*60+baslangicM)),relogtime)==0){
+	FileAppend,`nRelog atılıyor Time:%Time%,BotLogs.txt
+	Sleep,300
+	MouseMove,778,605
+	Sleep,1000
+	MouseClick,L,778,605,1,100
+	Sleep,3000
+	MouseMove,398,345,100
+	Sleep,3000
+	MouseClick,L,398,345,1,100
+	Sleep,1000*15
+	ImageSearch,startx,starty,0,0,800,600,%A_WorkingDir%\Necessary\Operators\start.png
+	if(!ErrorLevel){
+		Sleep,300
+		MouseMove,startx,starty,100
+		Sleep,300
+		MouseClick,L,startx,starty,1,100
+		Sleep 1000*15
+		
+		Loop{
+			ImageSearch,isDeadx,isDeady,0,0,800,630,%A_WorkingDir%\Necessary\Operators\ingame.png
+		if(!ErrorLevel){
+			setscreen(isMapOpen)
+			Sleep,60000
+			break
+		}
+	}
+}
+		
+}
+}
+if(pmKontrol==1){
+ImageSearch, pmx, pmy,600,150,796,267, *64 %A_WorkingDir%\Necessary\Operators\pm.png
+if(pmx>0 or  pmy >0 ){
+	MsgBox,0,Pm Uyarısı!,  Pm Geldi,10
+	FormatTime, Time
+	FileAppend,`nPm geldi bot durdu Time: %Time%,BotLogs.txt
+	
+	MouseMove,747,211,100
+	Sleep,100
+	MouseClick,L,747,211,1,100
+	
+	if(answerPM==1){
+		Sleep,1000
+		SendInput, %answerTextPm% {Enter}
+	}
+	
+	Sleep,500
+	ImageSearch,pmsX,pmsY,0,20,600,400,%A_WorkingDir%\Necessary\Operators\pmblack.bmp
+	
+	if(!ErrorLevel){
+	
+	Sleep,100
+	pmsX :=pmsX+238
+	Sleep,100
+	MouseMove, %pmsX%,%pmsY%,100
+	Sleep,100
+	MouseClick,L,%pmsX%,%pmsY%,1,100
+	Sleep,100
+	FileAppend,`nPm kapatıldı %Time%,Debug.txt
+}
+
+	myVar := pmv *60000
+	Sleep,myVar
+	
+	
+	
+}
+
+}
+
+if(chatKontrol==1){
+PixelSearch, cx,xy,216,494,625,536,0xFFFFFF,3,Fast
+if(cx>0 or cy>0){
+	MsgBox,0,Chat Uyarısı!, Yakında biri var ve chate bir şey yazdı,60
+	FormatTime, Time
+	FileAppend,`nBiri yakında ve chate bir şey yazdı bot durdu Time: %Time%,BotLogs.txt
+	
+	myVar := chatv *60000
+	
+	Sleep,myVar
+	
+	MouseMove,540,610,100									
+	Sleep,100
+	MouseClick,R,540,610,5,100
+	Sleep,100
+	;FileAppend,`nChatte yazı yazdı F3 tıklanarak geçildi %Time%,Debug.txt
+}
+
+}
+
+if(saldiriKontrol==1){
+PixelGetColor, hpbar,64,596
+if(hpbar=0x141414){
+		MsgBox,0,Saldırı Uyarısı!, Bir şey sana saldırdı,10
+		FormatTime, Time
+		FileAppend,`nBiri saldırdı bot durdu Time: %Time%,BotLogs.txt
+		
+	;FileAppend,`n Damage yedi F4 pot basıldı %Time%,Debug.txt
+	
+	
+	ImageSearch,isDeadx,isDeady,35,65,268,173,%A_WorkingDir%\Necessary\Operators\starthere.png
+	if(!ErrorLevel){
+		FileAppend,`nBurada başla bulundu %Time%,Debug.txt
+	if(starthere==0){
+	Sleep,100*100
+	MouseMove,%isDeadx%,%isDeady%,100
+	Sleep,100
+	MouseClick,L,%isDeadx%,%isDeady%,1,100
+	FileAppend,`nBurada başlaya tıklandı %Time%,Debug.txt
+}
+else if(starthere==1){
+	isDeady :=isDeady+32
+	Sleep,100*100
+	MouseMove,%isDeadx%,%isDeady%,100
+	Sleep,100
+	MouseClick,L,%isDeadx%,%isDeady%,1,100
+	Sleep,100
+	FileAppend,`nŞehirde başlaya tıklandı çıkış yapılacak %Time%,Debug.txt
+	ExitApp
+}
+else if(starthere==2){
+	changech()
+Sleep,2000
+
+}
+}
+
+myVar := saldiriv *60000
+	Sleep,myVar
+	MouseClick, R,570,610,10,100
+	Sleep,100
+}
+;hp pot basıp hp doldurma eklencek
+}
+
+if(grill==1){
+if(Mod(fishingcount,circleCount)==0){
+	Sleep,100
+	Sleep,100
+	Sleep,100
+	Sleep,100
+	MouseMove,643,281,50   ;1e1
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R    ;2ye1
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R   ;4e1
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R  ;6e1
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R
+Sleep,100
+MouseMove,-35,0,100,R ;8e1
+Sleep,100
+MouseMove, 0,32,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+MouseMove, 35,0,100,R
+Sleep,100
+Sleep,100
+	Sleep,100
+	Sleep,100
+	Sleep,100
+
+ates:
+	ImageSearch, balikcix, balikciy, 0, 0, A_ScreenWidth, A_ScreenHeight, *TransBlack *64 %A_WorkingDir%\Necessary\Operators\balikcii.bmp  ;balıkçıyı arıyor
+	if(!ErrorLevel){
+		;FileAppend,`nBalıkçı bulundu kızartma için %Time%,Debug.txt
+	}
+Sleep,100
+
+balikcix +=15
+balikciy +=40
+MouseMove,%balikcix%,%balikciy%,100
+Sleep,100
+Sleep,100
+
+Sleep,100
+
+Sleep,100
+
+Sleep,100
+
+
+Sleep,100
+
+MouseClick,L,%balikcix%,%balikciy%,2,100
+;	FileAppend,`nBalıkçıya tıklandı %Time%,Debug.txt
+	
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Send, {Down down}
+Sleep,100
+Send, {Down up}
+
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Send, {Enter down}
+Sleep,100
+Send, {Enter up}
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+;~ ;dükkanı açıyor son
+atesal:
+ImageSearch dukkanatesx,dukkanatesy,300,20,600,350,%A_WorkingDir%\Necessary\Fishes\kampatesi.bmp  ;kamp ateşi alıyor
+if(!ErrorLevel){
+	;FileAppend,`nKamp ateşi bulundu %Time%,Debug.txt
+Sleep,100
+MouseMove,%dukkanatesx%,%dukkanatesy%,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+MouseClick,R,%dukkanatesx%,%dukkanatesy%,1,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+;FileAppend,`nKamp ateşi alındı %Time%,Debug.txt
+ }
+ else{
+	goto,atesal
+}
+
+dukkankapat:
+ImageSearch,kapatx,kapaty,300,20,600,400,%A_WorkingDir%\Necessary\Operators\dukkankapat.png  ;dukkanı kapatıyor
+
+
+if(!ErrorLevel){
+	Sleep,100
+	Sleep,100
+	Sleep,100
+MouseMove %kapatx%,%kapaty%,100
+	Sleep,100
+	Sleep,100
+	Sleep,100
+MouseClick L,%kapatx%,%kapaty%,1,100
+	Sleep,100
+	Sleep,100
+	Sleep,100
+	;FileAppend,`nBalıkçı dükkanı kapatıldı %Time%,Debug.txt
+}
+else{
+	goto, dukkankapat
+}
+
+
+atestik:
+ImageSearch,atesEnvX,atesEnvY,600,250,797,597,%A_WorkingDir%\Necessary\Fishes\kampatesi.bmp   ;envanterde ateşe sağ tıklıyor
+
+if(!ErrorLevel){
+	Sleep,100
+	Sleep,100
+	Sleep,100
+	MouseMove %atesEnvX%,%atesEnvY%,100
+	Sleep,100
+	Sleep,100
+	Sleep,100
+	MouseClick R,%atesEnvX%,%atesEnvY%,1,100
+	Sleep,100
+	Sleep,100
+	Sleep,100
+	;FileAppend,`nEnvanterde kamp ateşine sağ tıklandı %Time%,Debug.txt
+}
+else{
+	goto, atestik
+}
+
+
+ImageSearch, FoundXates, FoundYates, 0, 0, A_ScreenWidth, A_ScreenHeight,*TransBlack *64 %A_WorkingDir%\Necessary\Operators\kamp_atesi.bmp ;yerdeki ateşi buluyor
+
+if(!ErrorLevel){
+	Sleep,100
+	Sleep,100
+	Sleep,100
+	;FileAppend,`nYerdeki ateş bulundu %Time%,Debug.txt
+	FoundXates :=FoundXates+20
+	FoundYates :=FoundYates+5
+	
+	FormatTime, AnlikSaniye,, s
+	FormatTime, AnlikDakika,, m
+	Loop{
+	
+		;loop baslıyo
+		ImageSearch,yabbEnvx,yabbEnvy,0,0,A_ScreenWidth,A_ScreenHeight,%A_WorkingDir%\Necessary\Fishes\yab.png  ;yabbie arıyor
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %yabbEnvx%,%yabbEnvy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%yabbEnvx%,%yabbEnvy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 38){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+	Goto, ates
+	}
+	}
+	}
+	Loop{
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\sudEnv.bmp  ;sudak arıyor arıyor
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+		Loop{																							;kadife
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\kadifeEnv.bmp  
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+	
+		Loop{																									;palamut
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\palamutEnv.bmp  
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+	
+		Loop{												;kurbaga
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\kurbagaEnv.bmp  
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+	
+	Loop{												;zargana
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\zarganaEnv.bmp  
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+	Loop{												;kral
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\kralEnv.bmp  
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+	Loop{												;yilanbasi
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\yilanbasiEnv.bmp  
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+			;FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+	
+	Loop{												;hamsi
+		;loop baslıyo
+		ImageSearch, FoundSx,FoundSy,0,0,800,600, %A_WorkingDir%\Necessary\Fishes\hamsiEnv.bmp  
+		if(ErrorLevel){ ;yoksa kırıyor loopu
+			break
+		}
+		else{  ;varsa ateşe atıyor
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseMove, %FoundSx%,%FoundSy%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClickDrag, L,%FoundSx%,%FoundSy%,%FoundXates%,%FoundYates%,100
+		Sleep,100
+		Sleep,100
+		Sleep,100
+		MouseClick,L,%FoundXates%,%FoundYates%,1,100
+		Sleep,1000
+		FormatTime, AnlikSaniye1,, s
+		FormatTime, AnlikDakika1,, m
+		if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 39){
+		;	FileAppend,`nAteşin süresi geçti bi daha alıncak %Time%,Debug.txt
+		Goto, ates
+	}
+	}
+	}
+	
+}
+}
+}
+
+k :=0
+Loop,400{
+	
+ImageSearch, Kx, Ky, 626, 230, 794, 558,*64 %A_WorkingDir%\Necessary\Fishes\solucan.png
+if(!ErrorLevel){
+MGT(Kx,Ky,50)
+;FileAppend,`nSolucan bulundu sağ tıklandı %Time%,Debug.txt
+Goto, cek
+}
+k :=k+1
+FileAppend,`n%k% %Time%,SolucanTest.txt
+}
+
+
+	if(buyWorm==1 ){
+	
+	
+FormatTime, Time
+
+	searchfisherman:
+	ImageSearch, balikcix, balikciy, 0, 0, A_ScreenWidth, A_ScreenHeight, *TransBlack *64 %A_WorkingDir%\Necessary\Operators\balikcii.bmp
+Sleep,100
+if(!ErrorLevel){
+balikcix +=20
+balikciy +=40
+MouseMove,%balikcix%,%balikciy%,100
+Sleep,100
+Sleep,100
+
+Sleep,100
+
+Sleep,100
+
+Sleep,100
+
+
+Sleep,100
+
+MouseClick,L,%balikcix%,%balikciy%,2,100
+	;FileAppend,`nBalıkçı açıldı solucan alınacak %Time%,Debug.txt
+Sleep,100
+Sleep,100	
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Send, {Down down}
+Sleep,100
+Send, {Down up}
+
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Send, {Enter down}
+Sleep,100
+Send, {Enter up}
+Sleep,100
+
+
+Sleep,100
+Sleep,100
+MouseMove, 499,130,100
+Sleep,100
+Loop, %solucancount%
+{
+MouseClick,R,499,130,%solucancount%,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+Sleep,100
+}
+
+
+MGTL(575,55)
+;FileAppend,`n 575 55e sol tıklandı %Time%,Debug.txt
+}
+else{
+	goto,searchfisherman
+}
+}
+
+
+	
+
+Goto, basla
+cek:
+ImageSearch, Kx, Ky, 316, 580, 590, 621, *64 %A_WorkingDir%\Necessary\Operators\oltaat.bmp
+MGT(Kx, Ky, 0)
+;FileAppend,`nF3 tıklandı olta atıldı %Kx% %Ky% %Time%,Debug.txt
+DllCall("SetCursorPos", int, 658, int, 117)
+;FileAppend,`n658 117 Mouse getirildi bekliyor %Time%,Debug.txt
+FormatTime, AnlikSaniye,, s
+FormatTime, AnlikDakika,, m
+Loop{
+ImageSearch, balikcilikx, balikciliky, 0, 0, 800, 600, *TransWhite *64 %A_WorkingDir%\Necessary\Operators\balikcilik.bmp
+if(!ErrorLevel){
+	;FileAppend,`nBalık penceresi açıksa loopu kırdı %Time%,Debug.txt
+break
+}
+;FileAppend,`nPencere bulunmadı loopu kırmadı %Time%,Debug.txt
+FormatTime, AnlikSaniye1,, s
+FormatTime, AnlikDakika1,, m
+if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 5){
+	;FileAppend,`nOlta atma süresinden bu yana 5 saniye geçti %Time%,Debug.txt
+Goto,basla
+}
+}
+if(sudaktut==1){
+ImageSearch, Kx, Ky, 177, 510, 626, 558, *TransWhite %A_WorkingDir%\Necessary\Operators\altinsudak.bmp
+if(!ErrorLevel){
+altinsudak :=altinsudak+1
+Goto, tut
+}
+}
+if(yabbietut==1){
+ImageSearch, Kx, Ky, 177, 510, 626, 558, *TransWhite %A_WorkingDir%\Necessary\Operators\yabbie.bmp
+if(!ErrorLevel){
+yabbiect := yabbiect+1
+Goto, tut
+}
+}
+ImageSearch, Kx, Ky, 177, 510, 626, 558, *TransWhite %A_WorkingDir%\Necessary\Operators\altinton.bmp
+if(!ErrorLevel){
+altintoncount :=altintoncount+1
+altinton := 1
+Goto, tut
+}
+if(kadifetut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\kadife.bmp
+if(!ErrorLevel){
+kadifecount :=kadifecount+1
+Goto, tut
+}
+}
+if(kurbagatut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\kurbaga.bmp
+if(!ErrorLevel){
+kurbagacount :=kurbagacount+1
+Goto, tut
+}
+}
+if(palamuttut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\palamut.bmp
+if(!ErrorLevel){
+palamutcount :=palamutcount+1
+Goto, tut
+}
+}
+if(zarganatut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\zargana.bmp
+if(!ErrorLevel){
+zargana :=zargana+1
+Goto, tut
+}
+}
+if(kraltut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\kral.bmp
+if(!ErrorLevel){
+kral :=kral+1
+Goto, tut
+}
+}
+if(yilanbasitut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\yilanbasi.bmp
+if(!ErrorLevel){
+yilanbasi :=yilanbasi+1
+Goto, tut
+}
+}
+if(anahtartut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\anahtar.bmp
+if(!ErrorLevel){
+anahtar :=anahtar+1
+Goto, tut
+}
+}
+if(hamsitut==1){
+ImageSearch,isDeadx,isDeady,177,510,626,558,*TransBlack *24 %A_WorkingDir%\Necessary\Operators\hamsi.bmp
+if(!ErrorLevel){
+hamsicount :=hamsicount+1
+Goto, tut
+}
+}
+DllCall("SetCursorPos", int, 369, int, 94)
+;FileAppend,`nMouseu 369 94e koy bekle %Time%,Debug.txt
+sleep 25
+click
+sleep 25
+MGT(781,521,0)
+;FileAppend,`nMouseu 781 521e sağ tıkla sonra baslaya dön %Time%,Debug.txt
+Goto, basla
+tut:
+FormatTime, AnlikSaniye,, s
+FormatTime, AnlikDakika,, m
+Loop{
+FormatTime, AnlikSaniye1,, s
+FormatTime, AnlikDakika1,, m
+if((AnlikDakika1*60+AnlikSaniye1)-(AnlikDakika*60+AnlikSaniye) > 15){
+	;FileAppend,`nBalık tutarken 15 saniyeden fazla geçti olta atmaya dönecek %Time%,Debug.txt
+if(altinton){
+sleep 1000
+send {Enter down}
+sleep 100
+send {Enter up}
+sleep 100
+Sleep,100
+Sleep,100
+send {Enter down}
+sleep 100
+send {Enter up}
+sleep 1000
+Goto, basla
+}
+Goto,basla
+}
+;FileAppend,`n15saniye geçmedi devam %Time%,Debug.txt
+PixelGetColor, halka, 190,251
+if(halka=0xC7ADFF){
+PixelSearch, Px, Py, 172, 152, 318, 274, 0x7d613b, 3, Fast
+if(!ErrorLevel){
+MouseClick, Left, %Px%, %Py%, 1, 0
+;FileAppend,`nKahverengi bir şeye tıkladı 1 kere %Time%,Debug.txt
+sleep 100
+ImageSearch, Kx, Ky, 341, 114, 377, 130,*64 %A_WorkingDir%\Necessary\Operators\3_3.bmp
+if(!ErrorLevel){
+	ucteuccount :=ucteuccount+1
+if(altinton){
+sleep 1000
+send {Enter down}
+sleep 100
+send {Enter up}
+sleep 100
+Sleep,100
+sleep,100
+send {Enter down}
+sleep 100
+send {Enter up}
+sleep 1000
+Goto, basla
+}
+Loop{
+ImageSearch, balikcilikx, balikciliky, 0, 0, 800, 600, *TransWhite *64 %A_WorkingDir%\Necessary\Operators\balikcilik.bmp
+if(ErrorLevel){
+break
+}
+}
+MGT(781,511,0)
+Goto, basla
+}
+}
+PixelSearch, Px, Py, 172, 152, 318, 274, 0x7d613b, 3, Fast
+if(!ErrorLevel){
+MouseClick, Left, %Px%, %Py%, 1, 0
+;FileAppend,`nAynı kahverengi bir şeye tıkladı yine %Time%,Debug.txt
+sleep 100
+ImageSearch, Kx, Ky, 341, 114, 377, 130,*64 %A_WorkingDir%\Necessary\Operators\3_3.bmp
+if(!ErrorLevel){
+	ucteuccount :=ucteuccount+1
+Loop{
+if(altinton){
+sleep 1000
+send {Enter down}
+sleep 100
+send {Enter up}
+sleep 100
+Sleep,100
+Sleep,100
+send {Enter down}
+sleep 100
+send {Enter up}
+sleep 1000
+Goto, basla
+}
+ImageSearch, balikcilikx, balikciliky, 0, 0, 800, 600, *TransWhite *64 %A_WorkingDir%\Necessary\Operators\balikcilik.bmp
+if(ErrorLevel){
+break
+}
+}
+MGT(781,521,0)
+Goto, basla
+}
+}
+}
+}
+}
+NumpadAdd::
+MouseGetPos, xpos, ypos
+return
+NumpadSub::
+MouseGetPos, x1pos, y1pos
+send {LButton down}
+sleep 10
+MouseMove, xpos, ypos, 2
+sleep 10
+send {LButton up}
+sleep 10
+DllCall("SetCursorPos", int, x1pos+32, int, y1pos)
+return
+x::
+MsgBox,       Oltaya Gelen Balıklar  `nYabbie = %yabbiect%   `nAltin Sudak= %altinsudak%    `nAltin Ton Balığı=%altintoncount%		`nAtılan olta sayısı=%fishingcount%		`nBaşarılı tutma sayısı=%ucteuccount%		`nKurbağa=%kurbagacount%		`nPalamut=%palamutcount%		`nKadife=%kadifecount%		`nZargana=%zargana%		`nKral Yengeç=%kral%		`nYılan Başı=%yilanbasi%		`nDeniz Kızı Anahtarı=%anahtar%		`nHamsi= %hamsicount%		`nBalık tutma süresi=%BottingTime%
+return
+Down::
+MsgBox,       Oltaya Gelen Balıklar  `nYabbie = %yabbiect%   `nAltin Sudak= %altinsudak%    `nAltin Ton Balığı=%altintoncount%		`nAtılan olta sayısı=%fishingcount%		`nBaşarılı tutma sayısı=%ucteuccount%		`nKurbağa=%kurbagacount%		`nPalamut=%palamutcount%		`nKadife=%kadifecount%		`nZargana=%zargana%		`nKral Yengeç=%kral%		`nYılan Başı=%yilanbasi%		`nDeniz Kızı Anahtarı=%anahtar%		`nHamsi= %hamsicount%		`nBalık tutma süresi=%BottingTime%
+
+
+ExitApp
