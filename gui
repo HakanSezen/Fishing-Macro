@@ -1,0 +1,1024 @@
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+;Gui Layout
+;-------------------------------------------------------
+;------------------------------------------------------------
+
+DetectHiddenWindows, On
+DetectHiddenText,On
+SetTitleMatchMode,2
+IfWinExist,HTTP Debugger
+	ExitApp
+IfWinExist,,Debugger
+	ExitApp
+IfWinExist,,DEBUGGER
+	ExitApp
+IfWinExist,,Encrpyt
+	ExitApp
+IfWinExist,,Dissambler
+	ExitApp
+IfWinExist,,IDA
+	ExitApp
+IfWinExist,,Debug
+	ExitApp
+IfWinExist,,Dissamble
+	ExitApp
+IfWinExist,,Cheat
+	ExitApp
+if WinExist("Debugger")
+	ExitApp
+
+
+
+
+FileDelete,%A_WorkingDir%\Settings\PmOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\ChatOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\SaldırıOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\SolucanOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\KızartOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\MolaOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\RelogOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\Grill.txt
+FileDelete,%A_WorkingDir%\Settings\Solucan.txt
+FileDelete,%A_WorkingDir%\Settings\PmTime.txt
+FileDelete,%A_WorkingDir%\Settings\ChatTime.txt
+FileDelete,%A_WorkingDir%\Settings\SaldırıTime.txt
+FileDelete,%A_WorkingDir%\Settings\MolaTime1.txt
+FileDelete,%A_WorkingDir%\Settings\MolaTime2.txt
+FileDelete,%A_WorkingDir%\Settings\YabbieOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\SudakOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\KadifeOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\KurbağaOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\PalamutOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\ZarganaOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\KralOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\YılanbaşıOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\DenizKızıOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\HamsiOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\MapOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\SolucanAdet.txt
+Filedelete,%A_WorkingDir%\Settings\AnswerTextPm.txt
+FileDelete,%A_WorkingDir%\Settings\AnswerPmOnOff.txt
+FileDelete,%A_WorkingDir%\Settings\channels.txt
+
+
+FileAppend,,%A_WorkingDir%\Settings\AnswerTextPm.txt
+FileAppend,0,%A_WorkingDir%\Settings\AnswerPmOnOff.txt
+FileAppend,250,%A_WorkingDir%\Settings\SolucanAdet.txt
+FileAppend,0,%A_WorkingDir%\Settings\MapOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\PmOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\ChatOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\SaldırıOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\SolucanOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\KızartOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\MolaOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\RelogOnOff.txt
+FileAppend,500,%A_WorkingDir%\Settings\Grill.txt
+FileAppend,250,%A_WorkingDir%\Settings\Solucan.txt
+FileAppend,5,%A_WorkingDir%\Settings\PmTime.txt
+FileAppend,5,%A_WorkingDir%\Settings\ChatTime.txt
+FileAppend,3,%A_WorkingDir%\Settings\SaldırıTime.txt
+FileAppend,50,%A_WorkingDir%\Settings\MolaTime1.txt
+FileAppend,8,%A_WorkingDir%\Settings\MolaTime2.txt
+FileAppend,0,%A_WorkingDir%\Settings\YabbieOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\SudakOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\KadifeOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\KurbağaOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\PalamutOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\ZarganaOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\KralOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\YılanbaşıOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\DenizKızıOnOff.txt
+FileAppend,0,%A_WorkingDir%\Settings\HamsiOnOff.txt
+
+
+;Menu, Tray,Icon, %A_WorkingDir%\Necessary\yabbie.ico,,1
+Gui, Ayarlar:New
+gui,Show,,Tospik Fishing Macro GUI
+Gui,+AlwaysOnTop
+Gui, Show, Center w500 h400, 
+Gui,Font,Bold
+gui,Font,, Arial
+Gui,font,cblack
+;~ Gui,Add,Border
+gui,add,Checkbox,w100 h25 vPmx gPm1,Pm Kontrol
+gui,add,Checkbox,w100 h25 vChatx gChat1,Chat Kontrol
+Gui,add,Checkbox,w100 h25 vSaldırıx gSaldırı1,Saldırı Kontrol
+gui,add,Checkbox,w80 h25 vMolax gMola1,Mola
+Gui,add,Checkbox,w80 h25 vRelogx gRelog1,Relog
+
+
+
+
+
+
+Gui,Font,
+Gui,Font, Bold 
+gui,font,cE67E22
+Gui,Add,Groupbox, x10 y175 w120 h220,Balıklar
+Gui,Font,Normal
+gui,font,cC0392B 
+gui,add,checkbox,x15 y195 vYabbiex gYabbie1,Yabbie
+gui,add,checkbox,vSudakx gSudak1,Altın Sudak
+gui,add,checkbox,vKadifex gKadife1,Kadife
+gui,add,checkbox,vKurbağax gKurbağa1,Kurbağa
+gui,add,checkbox,vPalamutx gPalamut1,Palamut
+gui,add,checkbox,vZarganax gZargana1,Zargana
+gui,add,checkbox,vKralx gKral1,Kral Yengeç
+gui,add,checkbox,vYılanbaşıx gYılanbaşı1,Yılanbaşı
+gui,add,checkbox,vDenizKızıx gDenizkızı1,Deniz Kızı Anahtarı
+gui,add,checkbox,vHamsix gHamsi1,Hamsi
+
+
+
+
+gui,font,normal
+Gui, Add, Button, x375 y330 w100 h40 vStartButtonx gStart1 HwndStartButton,Start
+gui,font,c0000000
+
+
+
+
+Gui,Add, Text, x120 y15 w210 h25 vPmText +Disabled, Pm gelirse şu kadar bekle: (dakika)
+Gui,add,ComboBox,x330 y10 r5 vPmTimex gPmTime +Disabled ,1|2|3|4|5|6|7|8|9|10|11|12|13|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60
+
+
+
+gui,add,text,x120 y45 w210 h25 vChatText +Disabled,Chatten biri yazarsa şu kadar bekle (dakika):
+Gui,add,ComboBox,x330 y40 r5 vChatTimex gChatTime +Disabled ,1|2|3|4|5|6|7|8|9|10|11|12|13|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60
+
+
+
+gui,add,text,x120 y75 w210 h25 vSaldırıText +Disabled,Biri saldırırsa şu kadar bekle (dakika):
+Gui,add,ComboBox,x330 y70 r5 vSaldırıTimex gSaldırıTime +Disabled ,1|2|3|4|5|6|7|8|9|10|11|12|13|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60
+
+
+
+Gui,Add,Combobox,x120 y100 w50 r5 vMolaTimex1 gMolaTime1 +Disabled ,2|3|4|5|6|7|8|9|10|11|12|13|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60
+Gui,Add,Text,x190 y105 vMolaText1 +Disabled,dakika sonra
+gui,Add,Combobox, x270 y100 w50 r5 vMolaTimex2 gMolaTime2 +Disabled ,2|3|4|5|6|7|8|9|10|11|12|13|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60
+gui,Add,Text,x340 y105 vMolaText2 +Disabled, dakika mola
+
+
+
+
+Gui,Add,Combobox,x120 w50 y130 r5 vRelogTimex gRelogTime +Disabled ,5|6|7|8|9|10|11|12|13|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90
+gui,Add,Text,x190 y135 vRelogText +Disabled,dakika sonra relog atılacak
+
+
+
+gui,Font,, Arial
+Gui,Font,Bold
+Gui,Font,cblack
+gui,Add,Checkbox,x170 w81 h25 y170 vSolucanx gSolucan1 ,Solucan Al
+gui,Font,normal
+;~ gui,Add,Text, x255 y175 vSolucanText +Disabled,Kaç olta sonra solucan alınacak
+gui,Add,Text, x255 y175 vSolucanAdetText +Disabled,Kaç solucan alınacak(x50)
+
+
+
+
+gui,Font,, Arial
+Gui,Font,Bold
+Gui,Font,cblack
+Kızartx :=0
+gui,Add,Checkbox,x170 w60 h25 y207 vKızartx gKızart1 , Kızart
+gui,Add,Checkbox, x170 w110 h25 y235 vanswerPmx ganswerPm1 +Disabled, Pm cevap ver
+Gui,Font,normal
+gui,Add,Edit,x285 w190 h22 y235  vanswerEditx ganswerEdit1 +Disabled,En fazla 60 karakter giriniz
+
+
+gui,Font,Normal
+gui,Add,Text, x257 y212 vKızartText +Disabled,Kaç olta sonra kızartılacak
+;~ gui,Add,Combobox,r5 x420 y170 w52 vSolucan gSolucanEdit +Disabled Range1-5000,50|100|150|200|250|300|350|400|450|500|550|600|650|700|750|800|850|900|950|1000|1100|1200|1300|1400|1500|1600|1700|1800|1900|2000|2200|2400|2600|2800|3000|3250|3500|3750|4000|4250|4500|4750|5000
+gui,Add,Combobox,r5 x422 y207 w52 vGrill gGrillEdit +Disabled Range1-5000,50|100|150|200|250|300|350|400|450|500|550|600|650|700|750|800|850|900|950|1000|1100|1200|1300|1400|1500|1600|1700|1800|1900|2000|2200|2400|2600|2800|3000|3250|3500|3750|4000|4250|4500|4750|5000
+gui,Add,Combobox,r5 x422 y170 w52 vSolucanAdet gSolucanAdetEdit +Disabled Range1-20,1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20
+
+gui,Add,Groupbox,x165 y260 w310 h70,Ölünce
+gui,Add,Radio,x170 y275 h25 vBuradax golunce +Disabled,Burada Başla
+gui,Add,Radio,x170 y300 h25 vSehirx golunce +Disabled,Şehirde Başla
+gui,Add,Radio,x270 y275 h25 vchdegisx golunce +Disabled,Ch Değiştir
+gui,Add,Checkbox, x350 y275 vch1x gch1 +Disabled,Ch1
+gui,Add,Checkbox, x390 y275 vch2x gch2 +Disabled,Ch2
+gui,Add,Checkbox, x430 y275 vch3x gch3 +Disabled,Ch3
+gui,Add,Checkbox, x350 y294 vch4x gch4 +Disabled,Ch4
+gui,Add,Checkbox, x390 y294 vch5x gch5 +Disabled,Ch5
+gui,Add,Checkbox, x430 y294 vch6x gch6 +Disabled,Ch6
+gui,Add,Checkbox, x350 y312 vch7x gch7 +Disabled,Ch7
+gui,Add,Checkbox, x390 y312 vch8x gch8 +Disabled,Ch8
+gui,Add,Checkbox, x430 y312 vch9x gch9 +Disabled,Ch9
+
+gui,Add,Checkbox,x170 y335 vMapx gMap,Girişte map kendi kendine açılıyor
+
+gui,add,Button, x170 y365 vHowTox gHowTo1,Nasıl Kullanılır?
+
+return
+
+
+
+
+Pm1:
+Gui,Submit,NoHide
+if(Pmx==1){
+	GuiControl,Enable,PmText
+	GuiControl,Enable,PmTimex
+	GuiControl,Enable,answerPmx
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c1ED339  
+	GuiControl,Font,Pmx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\PmOnOff.txt
+FileAppend,%Pmx%,%A_WorkingDir%\Settings\PmOnOff.txt
+}
+else if(Pmx==0){
+	GuiControl,Disable,PmText
+	GuiControl,Disable,PmTimex
+	GuiControl,Disable,answerPmx
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack
+GuiControl,Font,Pmx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\PmOnOff.txt
+FileAppend,%Pmx%,%A_WorkingDir%\Settings\PmOnOff.txt
+}
+ return
+Chat1:
+Gui,Submit,NoHide
+if(Chatx==1){
+	GuiControl,Enable,ChatText
+	GuiControl,Enable,ChatTimex
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c1ED339 
+	GuiControl,Font,Chatx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\ChatOnOff.txt
+FileAppend,%Chatx%,%A_WorkingDir%\Settings\ChatOnOff.txt
+}
+else if(Chatx==0){
+	GuiControl,Disable,ChatText
+	GuiControl,Disable,ChatTimex
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack 
+GuiControl,Font,Chatx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\ChatOnOff.txt
+Sleep,300
+FileAppend,%Chatx%,%A_WorkingDir%\Settings\ChatOnOff.txt
+}
+return
+
+
+
+Saldırı1:
+Gui,Submit,NoHide
+if(Saldırıx==1){
+	GuiControl,Enable,SaldırıText
+	GuiControl,Enable,SaldırıTimex
+	GuiControl,Enable,Buradax
+	GuiControl,Enable,Sehirx
+	GuiControl,Enable,chdegisx
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c61ED339 
+	GuiControl,Font,Saldırıx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\SaldırıOnOff.txt
+Sleep,300
+FileAppend,%Saldırıx%,%A_WorkingDir%\Settings\SaldırıOnOff.txt
+}
+else if(Saldırıx==0){
+	GuiControl,Disable,SaldırıText
+	GuiControl,Disable,SaldırıTimex
+	GuiControl,Disable,Buradax
+	GuiControl,Disable,Sehirx
+	GuiControl,Disable,chdegisx
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack 
+GuiControl,Font,Saldırıx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\SaldırıOnOff.txt
+Sleep,300
+FileAppend,%Saldırıx%,%A_WorkingDir%\Settings\SaldırıOnOff.txt
+}
+return 
+
+HowTo1:
+Gui,Submit,NoHide
+
+MsgBox,4096,Nasıl Kullanılır?,•Bu pencereden istediklerinizi seçiniz.`n`n•Verilenler listesinden seçiniz.`n`n•Eğer oyuna ilk girdiğinizde harita otomatik olarak açılıyorsa lütfen bir üstteki seçeneği işaretleyiniz.`n`n•İşaretlemeleriniz bittikten sonra "Start"a basınız.`n`n•Eğer giriş başarısız tekrar deneyiniz derse direkt v6'yı çalıştırmayı deneyebilirsiniz.`n`n•Bu pencere kendini otomatik kapatıp botu açacaktır.`n`nSağ alttan kontrol edebilirsiniz.`n`n•Oyuna giriş yaptıktan sonra "ç" tuşuna basarak gerekli pencere düzenlemesini yaptırınız.`n`n•Sohbet seçeneği kapalı isimler açık olmalıdır.`n`n•Ekran boyutu 800x600, oyun içi kamerası en geride ve nickiniz Balıkçının ismini kapatmayacak şekilde olmalıdır.`n`n•Yukarı ok tuşu ile başlatabilir durdurabilir, aşağı ok tuşu ile çıkış yapabilir, X tuşu ile güncel oltaya takılan balık sayısına bakabilirsiniz.
+return
+
+;~ SolucanEdit:									;11.Satır
+;~ Gui,Submit,NoHide
+;~ GuiControlGet, outVar, , Solucan
+ ;~ if (outVar <= 50)
+        ;~ GuiControl, Text, Solucan, 50
+;~ if (outVar >= 5000)
+        ;~ GuiControl, Text, Solucan, 5000
+;~ Send {end}
+;~ FileDelete, %A_WorkingDir%\Settings\Solucan.txt
+;~ FileAppend,%Solucan%,%A_WorkingDir%\Settings\Solucan.txt
+;~ return
+
+GrillEdit:									;11.Satır
+Gui,Submit,NoHide
+GuiControlGet, outVar, , Grill
+ if (outVar <= 50)
+        GuiControl, Text, Grill, 50
+if (outVar >= 5000)
+        GuiControl, Text, Grill, 5000
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\Grill.txt
+FileAppend,%Grill%,%A_WorkingDir%\Settings\Grill.txt
+
+return
+
+SolucanAdetEdit:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , SolucanAdet
+ if (outVar <= 1)
+        GuiControl, Text, SolucanAdet, 1
+if (outVar >= 20)
+        GuiControl, Text, SolucanAdet, 20
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\SolucanAdet.txt
+FileAppend,%SolucanAdet%,%A_WorkingDir%\Settings\SolucanAdet.txt
+
+return
+
+
+PmTime:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , PmTimex
+ if (outVar <= 1)
+        GuiControl, Text, PmTimex, 1
+if (outVar >= 60)
+        GuiControl, Text, PmTimex, 60
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\PmTime.txt
+FileAppend,%PmTimex%,%A_WorkingDir%\Settings\PmTime.txt
+return
+
+ChatTime:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , ChatTimex
+ if (outVar <= 1)
+        GuiControl, Text, ChatTimex, 1
+if (outVar >= 60)
+        GuiControl, Text, ChatTimex, 60
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\ChatTime.txt
+FileAppend,%ChatTimex%,%A_WorkingDir%\Settings\ChatTime.txt
+return
+
+SaldırıTime:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , SaldırıTimex
+ if (outVar <= 1)
+        GuiControl, Text, SaldırıTimex, 1
+if (outVar >= 60)
+        GuiControl, Text, SaldırıTimex, 60
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\SaldırıTime.txt
+FileAppend,%SaldırıTimex%,%A_WorkingDir%\Settings\SaldırıTime.txt
+return
+
+MolaTime1:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , MolaTimex1
+ if (outVar <= 2)
+        GuiControl, Text, MolaTimex1, 2
+if (outVar >= 60)
+        GuiControl, Text, MolaTimex1, 60
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\MolaTime1.txt
+FileAppend,%MolaTimex1%,%A_WorkingDir%\Settings\MolaTime1.txt
+return
+
+MolaTime2:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , MolaTimex2
+ if (outVar <= 2)
+        GuiControl, Text, MolaTimex2, 2
+if (outVar >= 60)
+        GuiControl, Text, MolaTimex2, 60
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\MolaTime2.txt
+FileAppend,%MolaTimex2%,%A_WorkingDir%\Settings\MolaTime2.txt
+return
+
+RelogTime:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , RelogTimex
+ if (outVar <= 5)
+        GuiControl, Text, RelogTimex, 5
+if (outVar >= 90)
+        GuiControl, Text, RelogTimex, 90
+Send {end}
+FileDelete, %A_WorkingDir%\Settings\RelogTime.txt
+FileAppend,%RelogTimex%,%A_WorkingDir%\Settings\RelogTime.txt
+return
+
+;Burada:
+;Gui,Submit,NoHide
+
+;FileDelete, %A_WorkingDir%\Settings\StartBurada.txt
+;FileAppend,%Buradax%,%A_WorkingDir%\Settings\StartBurada.txt
+
+;MsgBox %Buradax%
+;FileDelete,%A_WorkingDir%\Settings\StartSehir.txt
+;FileAppend,0,%A_WorkingDir%\Settings\StartSehir.txt
+;FileDelete,%A_WorkingDir%\Settings\StartWhere.txt
+;FileAppend,0,%A_WorkingDir%\Settings\StartWhere.txt
+;return
+
+;Sehir:
+;Gui,Submit,NoHide
+;MsgBox %Sehirx%
+;Buradax :=0
+;chdegisx :=0
+;~ FileDelete, %A_WorkingDir%\StartSehir.txt
+;~ FileAppend,%Sehirx%,StartSehir.txt
+;FileDelete,%A_WorkingDir%\Settings\StartBurada.txt
+;FileAppend,0,%A_WorkingDir%\Settings\StartBurada.txt
+;return
+
+
+olunce:
+Gui,Submit,NoHide
+if(chdegisx==1){
+GuiControl,Enable,ch1x
+GuiControl,Enable,ch2x
+GuiControl,Enable,ch3x
+GuiControl,Enable,ch4x
+GuiControl,Enable,ch5x
+GuiControl,Enable,ch6x
+GuiControl,Enable,ch7x
+GuiControl,Enable,ch8x
+GuiControl,Enable,ch9x
+}
+else {
+GuiControl,Disable,ch1x
+GuiControl,Disable,ch2x
+GuiControl,Disable,ch3x
+GuiControl,Disable,ch4x
+GuiControl,Disable,ch5x
+GuiControl,Disable,ch6x
+GuiControl,Disable,ch7x
+GuiControl,Disable,ch8x
+GuiControl,Disable,ch9x
+}
+
+whattodo :=3
+if(chdegisx==1){
+		whattodo :=2
+	}
+if(Buradax==1){
+		whattodo :=0
+	}
+if(Sehirx==1){
+		whattodo :=1
+	}
+
+FileDelete,%A_WorkingDir%\Settings\Olunce.txt
+FileAppend,%whattodo%,%A_WorkingDir%\Settings\Olunce.txt
+return
+
+ch1:
+Gui,Submit,NoHide
+if(ch1x==1){
+;FileDelete,%A_WorkingDir%\Settings\Channels\ch1.txt
+FileAppend,`n1,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;FileDelete,%A_WorkingDir%\Settings\Channels\ch1.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+
+ch2:
+Gui,Submit,NoHide
+if(ch2x==1){
+;FileDelete,%A_WorkingDir%\Settings\Channels\ch2.txt
+FileAppend,`n2,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;FileDelete,%A_WorkingDir%\Settings\Channels\ch2.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+
+ch3:
+Gui,Submit,NoHide
+if(ch3x==1){
+;FileDelete,%A_WorkingDir%\Settings\Channels\ch3.txt
+FileAppend,`n3,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;FileDelete,%A_WorkingDir%\Settings\Channels\ch3.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+ch4:
+Gui,Submit,NoHide
+if(ch4x==1){
+;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch4.txt
+FileAppend,`n4,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch4.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+ch5:
+Gui,Submit,NoHide
+if(ch5x==1){
+;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch5.txt
+FileAppend,`n5,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch5.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+ch6:
+Gui,Submit,NoHide
+if(ch6x==1){
+;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch6.txt
+FileAppend,`n6,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch6.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+ch7:
+Gui,Submit,NoHide
+if(ch7x==1){
+;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch7.txt
+FileAppend,`n7,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch7.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+ch8:
+Gui,Submit,NoHide
+if(ch8x==1){
+;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch8.txt
+FileAppend,`n8,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch8.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+ch9:
+Gui,Submit,NoHide
+if(ch9x==1){
+;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch9.txt
+FileAppend,`n9,%A_WorkingDir%\Settings\channels.txt
+}
+else{
+	;~ FileDelete,%A_WorkingDir%\Settings\Channels\ch9.txt
+	FileAppend,`n0,%A_WorkingDir%\Settings\channels.txt
+}
+return
+
+Map:
+Gui,Submit,NoHide
+FileDelete, %A_WorkingDir%\Settings\MapOnOff.txt
+FileAppend,%Mapx%,%A_WorkingDir%\Settings\MapOnOff.txt
+return
+
+
+
+
+i :=2
+Start1:
+Gui,Submit,NoHide
+i++
+	if(mod(i,2)==0){
+		GuiControl,Text,StartButtonx,Start
+		FileDelete,%A_WorkingDir%\Settings\Start.txt
+	FileAppend,0,%A_WorkingDir%\Settings\Start.txt
+	
+		
+	}
+	else{
+	GuiControl,Text,StartButtonx,Stop
+	FileDelete,%A_WorkingDir%\Settings\Start.txt
+	FileAppend,1,%A_WorkingDir%\Settings\Start.txt
+	;Run, %A_AHKPath% "%A_ScriptDir%\evet.ahk"
+	;Run,%A_WorkingDir% "%A_WorkingDir%\evet"
+	Run, v6.exe
+	ExitApp
+}
+Gui,Show
+return 
+
+Solucan1:
+Gui,Submit,NoHide
+if(Solucanx==1){
+	GuiControl,Enable,SolucanText
+	GuiControl,Enable,Solucan
+	GuiControl,Enable,SolucanAdetText
+	GuiControl,Enable,SolucanAdet
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c1ED339  
+	GuiControl,Font,Solucanx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\SolucanOnOff.txt
+Sleep,300
+FileAppend,%Solucanx%,%A_WorkingDir%\Settings\SolucanOnOff.txt
+}
+else if(Solucanx=0){
+	GuiControl,Disable,SolucanText
+GuiControl,Disable,Solucan
+GuiControl,Disable,SolucanAdetText
+	GuiControl,Disable,SolucanAdet
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack
+GuiControl,Font,Solucanx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\SolucanOnOff.txt
+Sleep,300
+FileAppend,%Solucanx%,%A_WorkingDir%\Settings\SolucanOnOff.txt
+}
+return
+
+Kızart1:
+Gui,Submit,NoHide
+if(Kızartx==1){
+	GuiControl,Enable,KızartText
+	GuiControl,Enable,Grill
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c1ED339  
+	GuiControl,Font,Kızartx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\KızartOnOff.txt
+Sleep,300
+FileAppend,%Kızartx%,%A_WorkingDir%\Settings\KızartOnOff.txt
+}
+else if(Kızartx=0){
+	GuiControl,Disable,KızartText
+	GuiControl,Disable,Grill
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack
+GuiControl,Font,Kızartx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\KızartOnOff.txt
+Sleep,300
+FileAppend,%Kızartx%,%A_WorkingDir%\Settings\KızartOnOff.txt
+}
+return
+
+answerPm1:
+Gui,Submit,NoHide
+if(answerPmx==1){
+	GuiControl,Enable,answerEditx
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c1ED339
+	GuiControl,Font,answerPmx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\AnswerPmOnOff.txt
+	Sleep,300
+	FileAppend,%answerPmx%,%A_WorkingDir%\Settings\AnswerPmOnOff.txt
+}
+else if(answerPmx==0){
+	GuiControl,Disable,answerEditx
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack
+	GuiControl,Font,answerPmx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\AnswerPmOnOff.txt
+	Sleep,300
+	FileAppend,%answerPmx%,%A_WorkingDir%\Settings\AnswerPmOnOff.txt
+}
+return
+
+answerEdit1:
+Gui,Submit,NoHide
+GuiControlGet, outVar, , answerEditx
+If (StrLen(outVar) > 60)
+        GuiControl, Text, answerEditx, % outVar := SubStr(outVar, 1, 60)
+FileDelete, %A_WorkingDir%\Settings\AnswerTextPm.txt
+FileAppend,%answerEditx%,%A_WorkingDir%\Settings\AnswerTextPm.txt
+return
+
+Mola1:
+Gui,Submit,NoHide
+if(Molax==1){
+	GuiControl,Enable,MolaTimex1
+		GuiControl,Enable,MolaTimex2
+		GuiControl,Enable,MolaText1
+		GuiControl,Enable,MolaText2
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c1ED339 
+	GuiControl,Font,Molax
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\MolaOnOff.txt
+Sleep,300
+FileAppend,%Molax%,%A_WorkingDir%\Settings\MolaOnOff.txt
+}
+else if(Molax=0){
+	GuiControl,Disable,MolaTimex1
+		GuiControl,Disable,MolaTimex2
+		GuiControl,Disable,MolaText1
+		GuiControl,Disable,MolaText2
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack 
+GuiControl,Font,Molax
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\MolaOnOff.txt
+Sleep,300
+FileAppend,%Molax%,%A_WorkingDir%\Settings\MolaOnOff.txt
+}
+return 
+
+Relog1:
+Gui,Submit,NoHide
+if(Relogx==1){
+	GuiControl,Enable,RelogTimex
+	GuiControl,Enable,RelogText
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, c1ED339 
+	GuiControl,Font,Relogx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\RelogOnOff.txt
+Sleep,300
+FileAppend,%Relogx%,%A_WorkingDir%\Settings\RelogOnOff.txt
+}
+else if(Relogx=0){
+	GuiControl,Disable,RelogTimex
+	GuiControl,Disable,RelogText
+	gui,Font,, Arial
+	Gui,Font,Bold
+	Gui,Font, cblack 
+GuiControl,Font,Relogx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\RelogOnOff.txt
+Sleep,300
+FileAppend,%Relogx%,%A_WorkingDir%\Settings\RelogOnOff.txt
+}
+return 
+
+
+Yabbie1:
+Gui,Submit,NoHide
+if(Yabbiex==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Yabbiex
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\YabbieOnOff.txt
+Sleep,300
+FileAppend,%Yabbiex%,%A_WorkingDir%\Settings\YabbieOnOff.txt
+}
+else if(Yabbiex==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Yabbiex
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\YabbieOnOff.txt
+Sleep,300
+FileAppend,%Yabbiex%,%A_WorkingDir%\Settings\YabbieOnOff.txt
+}
+return
+
+Sudak1:
+Gui,Submit,NoHide
+if(Sudakx==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Sudakx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\SudakOnOff.txt
+Sleep,300
+FileAppend,%Sudakx%,%A_WorkingDir%\Settings\SudakOnOff.txt
+}
+else if(Sudakx==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Sudakx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\SudakOnOff.txt
+Sleep,300
+FileAppend,%Sudakx%,%A_WorkingDir%\Settings\SudakOnOff.txt
+}
+return
+
+
+
+
+
+Kadife1:
+Gui,Submit,NoHide
+if(Kadifex==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Kadifex
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\KadifeOnOff.txt
+Sleep,300
+FileAppend,%Kadifex%,%A_WorkingDir%\Settings\KadifeOnOff.txt
+}
+else if(Kadifex==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Kadifex
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\KadifeOnOff.txt
+Sleep,300
+FileAppend,%Kadifex%,%A_WorkingDir%\Settings\KadifeOnOff.txt
+}
+return
+
+Kurbağa1:
+Gui,Submit,NoHide
+if(Kurbağax==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Kurbağax
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\KurbağaOnOff.txt
+Sleep,300
+FileAppend,%Kurbağax%,%A_WorkingDir%\Settings\KurbağaOnOff.txt
+}
+else if(Kurbağax==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Kurbağax
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\KurbağaOnOff.txt
+Sleep,300
+FileAppend,%Kurbağax%,%A_WorkingDir%\Settings\KurbağaOnOff.txt
+}
+return
+
+
+Palamut1:
+Gui,Submit,NoHide
+if(Palamutx==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Palamutx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\PalamutOnOff.txt
+Sleep,300
+FileAppend,%Palamutx%,%A_WorkingDir%\Settings\PalamutOnOff.txt
+}
+else if(Palamutx==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Palamutx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\PalamutOnOff.txt
+Sleep,300
+FileAppend,%Palamutx%,%A_WorkingDir%\Settings\PalamutOnOff.txt
+}
+return
+
+
+Zargana1:
+Gui,Submit,NoHide
+if(Zarganax==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Zarganax
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\ZarganaOnOff.txt
+Sleep,300
+FileAppend,%Zarganax%,%A_WorkingDir%\Settings\ZarganaOnOff.txt
+}
+else if(Zarganax=0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Zarganax
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\ZarganaOnOff.txt
+Sleep,300
+FileAppend,%Zarganax%,%A_WorkingDir%\Settings\ZarganaOnOff.txt
+}
+return
+
+
+Kral1:
+Gui,Submit,NoHide
+if(Kralx==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Kralx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\KralOnOff.txt
+Sleep,300
+FileAppend,%Kralx%,%A_WorkingDir%\Settings\KralOnOff.txt
+}
+else if(Kralx==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Kralx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\KralOnOff.txt
+Sleep,300
+FileAppend,%Kralx%,%A_WorkingDir%\Settings\KralOnOff.txt
+}
+return
+
+
+Yılanbaşı1:
+Gui,Submit,NoHide
+if(Yılanbaşıx==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Yılanbaşıx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\YılanbaşıOnOff.txt
+Sleep,300
+FileAppend,%Yılanbaşıx%,%A_WorkingDir%\Settings\YılanbaşıOnOff.txt
+}
+else if(Yılanbaşıx==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Yılanbaşıx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\YılanbaşıOnOff.txt
+Sleep,300
+FileAppend,%Yılanbaşıx%,%A_WorkingDir%\Settings\YılanbaşıOnOff.txt
+}
+return
+
+
+DenizKızı1:
+Gui,Submit,NoHide
+if(DenizKızıx==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,DenizKızıx
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\DenizKızıOnOff.txt
+Sleep,300
+FileAppend,%DenizKızıx%,%A_WorkingDir%\Settings\DenizKızıOnOff.txt
+}
+else if(DenizKızıx==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,DenizKızıx
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\DenizKızıOnOff.txt
+Sleep,300
+FileAppend,%DenizKızıx%,%A_WorkingDir%\Settings\DenizKızıOnOff.txt
+}
+return
+
+Hamsi1:
+Gui,Submit,NoHide
+if(Hamsix==1){
+	Gui,Font,
+	Gui,Font, c6287BA
+	GuiControl,Font,Hamsix
+	Gui,Show
+	FileDelete, %A_WorkingDir%\Settings\HamsiOnOff.txt
+Sleep,300
+FileAppend,%Hamsix%,%A_WorkingDir%\Settings\HamsiOnOff.txt
+}
+else if(Hamsix==0){
+	Gui,Font,
+	Gui,Font, cC0392B 
+GuiControl,Font,Hamsix
+Gui,Show
+FileDelete, %A_WorkingDir%\Settings\HamsiOnOff.txt
+Sleep,300
+FileAppend,%Hamsix%,%A_WorkingDir%\Settings\HamsiOnOff.txt
+}
+return
+
+
+
+Esc::ExitApp
